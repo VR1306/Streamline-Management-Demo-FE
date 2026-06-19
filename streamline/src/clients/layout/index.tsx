@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-import Navbar, { NavItem } from "@/src/components/navbaar";
+import Navbar, { NavItem } from "@/src/components/navbar";
 
 import Performance from "../performance";
 import TrafficAnalysisClient from "../trafficAnalysis";
