@@ -131,6 +131,7 @@ export function CommonPagination({
               className="-rotate-90"
               width={14}
               height={14}
+              loading='lazy'
             />
           </span>
         }

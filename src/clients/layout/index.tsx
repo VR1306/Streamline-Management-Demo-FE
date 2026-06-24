@@ -17,6 +17,8 @@ import { mockSocket, RealtimePayload } from "@/src/helpers/mockSocket";
 import { ControlledInput } from "@/src/components/controlledInput";
 import Tabs, { TabItem } from "@/src/components/tabs";
 import { useRouter, useSearchParams } from "next/navigation";
+import OnDemandRefreshComp from "./onDemandRefresh";
+import Button from "@/src/components/button";
 
 interface OrganizationOption {
   label: string;
@@ -95,6 +97,7 @@ const ClientHome = () => {
 
   const router = useRouter()
 
+  const [isTokenEdit,setIsTokenEdit] = useState<boolean>(false)
   const organizationSelected = useWatch({
     control,
     name: "organization",
@@ -215,7 +218,6 @@ const ClientHome = () => {
   return (
     <section>
       <Navbar
-        logo="Streaming Management"
         links={filteredNavLinks}
         activeTab={activeTab}
         onTabChange={setActiveTab}
@@ -246,13 +248,24 @@ const ClientHome = () => {
             ]}
             containerClassName="w-full"
           />
-          {!isStreamLineModule && <ControlledInput
+          {!isStreamLineModule && 
+          <ControlledInput
+              isIcon
+              icon={
+                isTokenEdit ? <button type="button" className="absolute cursor-pointer right-0 top-0 flex items-center px-3 h-full text-gray-500" onClick={()=>setIsTokenEdit(false)}>
+                  <Image src={Images.greenTick} alt="greenTick" width={20} height={20}/>
+                </button> : <button type="button" className="absolute cursor-pointer right-0 top-0 flex items-center px-3 h-full text-gray-500" onClick={()=>setIsTokenEdit(true)}>
+                  <Image src={Images.edit} alt="edit" width={20} height={20}/>
+                </button>
+              }
               type="text"
               name="token"
               label={"Token"}
               placeholder={"Enter Token"}
               containerClassName="w-full"
               isCustomBorder="border border-gray-300"
+              disabled={!isTokenEdit}
+              readOnly={!isTokenEdit}
             />}
         </form>
       </FormProvider>
@@ -324,6 +337,12 @@ const ClientHome = () => {
           )}
         </>
       )}
+ <OnDemandRefreshComp 
+      moduleType={moduleTypeValue?.value} 
+      activeTab={activeTab} 
+      currentOrganization={organizationSelected?.value}
+      />
+   
     </section>
   );
 };

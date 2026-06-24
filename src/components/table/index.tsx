@@ -72,8 +72,6 @@ const CommonTable = <T extends object>({
   pageSize,
   containerClassName,
 }: TCommonTableProps<T>) => {
-  const { t, i18n } = useTranslation('common');
-  const currentLanguage = i18n.language;
 
   const start =
     totalCount !== undefined && pageSize !== undefined
@@ -127,14 +125,11 @@ const CommonTable = <T extends object>({
                 <td colSpan={headers.length}>
                   <div className="py-8 flex items-center justify-center">
                     <Image
-                      src={
-                        currentLanguage === 'fr'
-                          ? Images.noDataFr
-                          : Images.noData
-                      }
-                      alt={i18n.t('common:noData')}
-                      width={currentLanguage === 'en' ? 200 : 260}
+                      src={Images.noData}
+                      alt={'No Data'}
+                      width={260}
                       height={260}
+                      loading='eager'
                     />
                   </div>
                 </td>
@@ -156,14 +151,14 @@ const CommonTable = <T extends object>({
             {totalCount !== undefined && pageSize !== undefined && (
               <div className="flex flex-row sm:flex-col items-center sm:items-start text-sm font-medium gap-1 sm:gap-0">
                 <span className="text-[#8F9091] whitespace-nowrap">
-                  {t('common.pagination.showingResults')}
+                  {'Showing Results'}
                 </span>
                 <span className="text-[#333333] whitespace-nowrap font-normal">
                   <span className="font-bold">
                     {start}-{end}
                   </span>
                   <span className="text-[#8F9091] ml-1">
-                    {t('common.pagination.of')} {totalCount}
+                    {'of'} {totalCount}
                   </span>
                 </span>
               </div>

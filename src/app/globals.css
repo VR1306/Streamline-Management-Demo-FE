@@ -1,17 +1,690 @@
-@import "tailwindcss";
+/* Global CSS file - Tailwind CSS v4 */
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #1c2b51;
+/*Common colors should be mentioned in this format. Need to mention color as --color-primary and while importing you can use it as bg-primary no need to mention bg--color-primary*/
+@theme {
+  /*Colours*/
+  --color-primary: #1c2b51;
+  --color-switch-to: #313957;
+  --color-accountId-background: #cfc2b9;
+  --color-secondary: #e2e8f0;
+  --color-profile-desgination: #565656;
+  --color-profile-name: #404040;
+  --color-profile-input: #54585e;
+  --color-profile-label: #818c9c;
+  --color-profile-title: #3c424c;
+  --color-profile-description: #8a94a3;
+  --color-profile-heading: #818c9c;
+  --color-profile-activitabdescription: #8792a1;
+  --color-text-secondary: #313957;
+  --color-error: #d00416;
+  --color-primary-text: #0c1421;
+  --color-secondary-text: #313957;
+  --color-link-text: #1e4ae9;
+  --color-forgotPassword: #4c6cbd;
+  --color-copyright-text: #959cb6;
+  --color-header-subtitle: #475569;
+  --color-table-header: #ddeafc;
+  --color-tableRow-deactivate: #ffe6e6;
+  --color-tableRow-active: #f8fafc;
+  --color-drawer-subtitle: #6b7280;
+  --color-tableRow-organization: #1d2b50;
+  --color-adminstration-innertable: #475569;
+  --color-fields-border: #d4d7e3;
+  --color-addUser-border: #abb8e8;
+  --color-addUserFields-border: #d4d7e3;
+  --color-placeholder-text: #8897ad;
+  --color-table-active: #f9fbff;
+  --color-table-deactive: #fff6f2;
+  --color-input-base: #f3f8ff;
+  --color-modal-title: #627084;
+  --color-sidebar-hover: #e7f1ff;
+  --color-sidebar-active: #d0e2ff;
+  --color-filter-active: #e7f1ff;
+  --color-navy-400: #4a5573;
+  --color-navy-100: #d2d5dc;
+  --color-user-title: #1d2b50;
+
+  /* Plan Detail Specific Colors */
+  --color-plan-detail-title: #1d2b50;
+  --color-plan-status-active: #28aa69;
+  --color-plan-section-heading: #414d55;
+  --color-plan-field-label: #404040;
+  --color-plan-field-value: #696d6e;
+
+  /* Disabled Button state colors */
+  --color-disabled-fill: #dcdcdd;
+  --color-disabled-text: #434344;
+
+  /* Search and Filter / Global Controls */
+  --border-neutral: #d2d5dc;
+  --search-background: #f3f8ff;
+  --control-height: 2.625rem;
+
+  /* Administration status colors */
+  --color-status-active-bg: #dcfce7;
+  --color-status-active-text: #22c55e;
+
+  --color-status-inactive-bg: #fee2e2;
+  --color-status-inactive-text: #ef4444;
+
+  /* Organization tree */
+  --color-tableRow-organization: #1d2b50;
+  --color-administration-innertable: #475569;
+
+  --color-org-tree-level0-bg: #f1f5f9;
+  --color-org-tree-border: #e2e8f0;
+
+  /* Action Menu */
+  --color-action-menu-bg: #fefefe;
+  --color-action-menu-border: #d2d5dc;
+
+  /* Account Status Card – status badge */
+  --color-account-status-active-bg: #eaf7f1;
+  --color-account-status-active-text: #1fc16b;
+  --color-account-status-inactive-bg: #fef2f2;
+  --color-account-status-inactive-text: #b91c1c;
+
+  /* Account Status Card – card chrome */
+  --color-account-card-border: #dee2e9;
+  --color-account-card-bg: #fefefe;
+
+  /* Account ID badge */
+  --color-account-id-bg: #e4e7e9;
+  --color-account-id-text: #434344;
+
+  /* Avatar */
+  --avatar-initial-size: 3.55rem;
+
+  /* Errors */
+  --color-error-bg: #fef2f2;
+
+  /* Table status colors */
+  --color-tablestatus-active-bg: #d6f7e6;
+  --color-tablestatus-active-text: #145535;
+
+  --color-tablestatus-deactive-bg: #fbd9d7;
+  --color-tablestatus-deactive-text: #5f1b16;
+
+  --color-tablestatus-migrated-bg: #e8e6ff;
+  --color-tablestatus-migrated-text: #1700ff;
+
+  --color-tablestatus-invited-bg: #d0e2ff;
+  --color-tablestatus-invited-text: #090066;
+
+  --color-tablestatus-inactive-bg: #ffefd3;
+  --color-tablestatus-inactive-text: #986a14;
+
+  --color-tablestatus-paused-bg: #e8e6ff;
+  --color-tablestatus-paused-text: #1700ff;
+
+  --color-tablestatus-resume-bg: #d1fae5;
+  --color-tablestatus-resume-text: #047857;
+
+  /*Spacing*/
+  --spacing-base-4: 0.25rem;
+  --spacing-base-14: 14px;
+  --spacing-base-16: 1rem;
+  --spacing-base-20: 1.25rem;
+  --spacing-base-32: 2rem;
+  --spacing-base-50: 3.125rem;
+  --radius-4: 4px;
+  --radius-8: 0.5rem;
+  --main-card-min-height: 85vh;
 }
 
+/*Font Size*/
+@layer utilities {
+  .text-12 {
+    font-size: 12px;
+  }
+  .text-13 {
+    font-size: 13px;
+  }
+  .text-14 {
+    font-size: 14px;
+  }
+  .text-16 {
+    font-size: 16px;
+  }
+  .text-20 {
+    font-size: 20px;
+  }
+
+  /* Aliases used in profile UI: text-fs-XX */
+  .text-fs-11 {
+    font-size: 0.6875rem;
+  }
+  .text-fs-12 {
+    font-size: 0.75rem;
+  }
+  .text-fs-13 {
+    font-size: 0.8125rem;
+  }
+  .text-fs-14 {
+    font-size: 0.875rem;
+  }
+  .text-fs-15 {
+    font-size: 0.925rem;
+  }
+  .text-fs-16 {
+    font-size: 1rem;
+  }
+  .text-fs-18 {
+    font-size: 1.125rem;
+  }
+
+  .text-fs-24 {
+    font-size: 1.5rem;
+  }
+
+  /* Avatar initial text size */
+  .text-avatar-initial {
+    font-size: var(--avatar-initial-size);
+  }
+
+  /* // SPACING UTILITIES */
+
+  .py-base-14 {
+    padding-top: var(--spacing-base-14);
+    padding-bottom: var(--spacing-base-14);
+  }
+  .px-base-16 {
+    padding-left: var(--spacing-base-16);
+    padding-right: var(--spacing-base-16);
+  }
+  .py-base-16 {
+    padding-top: var(--spacing-base-16);
+    padding-bottom: var(--spacing-base-16);
+  }
+  .px-base-20 {
+    padding-left: var(--spacing-base-20);
+    padding-right: var(--spacing-base-20);
+  }
+  .py-base-20 {
+    padding-top: var(--spacing-base-20);
+    padding-bottom: var(--spacing-base-20);
+  }
+
+  .p-base-16 {
+    padding: var(--spacing-base-16);
+  }
+
+  .p-base-32 {
+    padding: var(--spacing-base-32);
+  }
+  .px-base-32 {
+    padding-left: var(--spacing-base-32);
+    padding-right: var(--spacing-base-32);
+  }
+  .py-base-32 {
+    padding-top: var(--spacing-base-32);
+    padding-bottom: var(--spacing-base-32);
+  }
+
+  .py-base-4 {
+    padding-top: var(--spacing-base-4);
+    padding-bottom: var(--spacing-base-4);
+  }
+
+  .px-base-50 {
+    padding-left: var(--spacing-base-50);
+    padding-right: var(--spacing-base-50);
+  }
+  .py-base-50 {
+    padding-top: var(--spacing-base-50);
+    padding-bottom: var(--spacing-base-50);
+  }
+
+  .space-y-base-32 > * + * {
+    margin-top: var(--spacing-base-32);
+  }
+
+  .rounded-base-4 {
+    border-radius: var(--radius-4);
+  }
+
+  .rounded-base-8 {
+    border-radius: var(--radius-8);
+  }
+
+  .min-h-main-card {
+    min-height: var(--main-card-min-height);
+  }
+  /* Circular Loader Animations */
+  .animate-rotate4 {
+    animation: rotate4 2s linear infinite;
+  }
+  .animate-dash4 {
+    animation: dash4 1.5s ease-in-out infinite;
+  }
+
+  .global-input-focus {
+    &:focus {
+      outline: none;
+      border-color: var(--color-sidebar-active);
+      box-shadow: 0 0 0 1.5px var(--color-sidebar-active);
+    }
+  }
+
+  .search-filter-focus {
+    outline: none;
+    border-color: var(--color-sidebar-active);
+    box-shadow: 0 0 0 1.5px var(--color-sidebar-active);
+  }
+
+  .global-error-focus {
+    &:focus {
+      outline: none;
+      border-color: var(--color-error);
+      box-shadow: 0 0 0 1.5px var(--color-error);
+    }
+  }
+
+  /* Utility to hide scrollbars while maintaining scroll functionality */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari and Opera */
+    }
+  }
+
+  /* Custom hover utilities to prevent sticky hover on touch devices */
+  @media (hover: hover) {
+    .can-hover\:hover-bg-gray-50:hover {
+      background-color: #f9fafb;
+    }
+    .can-hover\:hover-bg-gray-100:hover {
+      background-color: #f3f4f6;
+    }
+    .can-hover\:hover-bg-sidebar-hover:hover {
+      background-color: var(--color-sidebar-hover);
+    }
+    .can-hover\:hover-bg-column-hover:hover {
+      background-color: #f3f8ff;
+    }
+  }
+
+  /* Phone Input Dropdown Styles */
+  .phone-dropdown-panel {
+    transition: all 0.2s ease-out;
+
+    /* Desktop default: > 1024px */
+    width: 20rem; /* 320px */
+    max-height: 28.125rem; /* 450px */
+
+    @media (max-height: 700px) {
+      max-height: 20rem; /* 320px */
+    }
+
+    /* Tablet: 481px to 1024px */
+    @media (min-width: 481px) and (max-width: 1024px) {
+      width: 18.125rem; /* 290px */
+      max-height: 21rem; /* 360px */
+
+      @media (max-height: 700px) {
+        max-height: 17.5rem; /* 280px */
+      }
+    }
+
+    /* Mobile: <= 480px */
+    @media (max-width: 480px) {
+      width: calc(100vw - 2.5rem);
+      max-width: 16.25rem; /* 260px */
+      max-height: 17.5rem; /* 280px */
+
+      @media (max-height: 700px) {
+        max-height: 15rem; /* 240px */
+      }
+    }
+
+    /* Safety for very narrow mobile screens like 320px */
+    @media (max-width: 360px) {
+      width: calc(100vw - 2rem);
+      max-width: 15rem; /* 240px */
+      left: 0 !important;
+      right: auto !important;
+      margin-left: -0.5rem; /* Slight shift to help centering if button is at start */
+
+      &.pos-top {
+        margin-bottom: 0.25rem;
+      }
+    }
+
+    &.pos-right {
+      left: auto;
+      right: 0;
+      transform-origin: top right;
+    }
+
+    &.pos-top {
+      top: auto;
+      bottom: 100%;
+      margin-top: 0;
+      margin-bottom: 0.25rem;
+      transform-origin: bottom left;
+    }
+
+    &.pos-right.pos-top {
+      transform-origin: bottom right;
+    }
+  }
+
+  .phone-dropdown-list {
+    overflow-y: auto;
+
+    /* Desktop default: > 1024px */
+    max-height: 23.5rem; /* 376px (leaves space for search header) */
+
+    @media (max-height: 700px) {
+      max-height: 15rem; /* 240px */
+    }
+
+    /* Tablet: 481px to 1024px */
+    @media (min-width: 481px) and (max-width: 1024px) {
+      max-height: 18rem; /* 288px */
+
+      @media (max-height: 700px) {
+        max-height: 13rem;
+      }
+    }
+
+    /* Mobile: <= 480px */
+    @media (max-width: 480px) {
+      max-height: 13rem; /* 208px */
+
+      @media (max-height: 700px) {
+        max-height: 10.5rem;
+      }
+    }
+  }
+
+  .placeholder-truncate {
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    min-width: 0;
+  }
+
+  .placeholder-truncate::placeholder {
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+  }
+
+  .placeholder-truncate:focus::placeholder {
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+  }
+
+  .placeholder-truncate::-webkit-input-placeholder {
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+  }
+
+  .placeholder-truncate:focus::-webkit-input-placeholder {
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+  }
+
+  .placeholder-truncate::-moz-placeholder {
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+  }
+
+  .placeholder-truncate:focus::-moz-placeholder {
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+  }
+
+  .placeholder-truncate:-ms-input-placeholder {
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+  }
+
+  .placeholder-truncate:focus:-ms-input-placeholder {
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+  }
+}
+
+@keyframes rotate4 {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash4 {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dashoffset: -125px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
   margin: 0;
   padding: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  border-radius: 16px;
-  border: 1px solid #E5E7EB;
+}
 
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+}
+
+/* WebKit browsers (Chrome, Edge, Safari) */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 9999px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #f3f8ff inset !important;
+  box-shadow: 0 0 0 1000px #f3f8ff inset !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+/* Ensure focus ring works with autofill */
+.global-input-focus:focus:-webkit-autofill {
+  box-shadow:
+    0 0 0 1000px #f3f8ff inset,
+    0 0 0 1.5px var(--color-sidebar-active) !important;
+}
+
+.global-error-focus:focus:-webkit-autofill {
+  box-shadow:
+    0 0 0 1000px #f3f8ff inset,
+    0 0 0 1.5px var(--color-error) !important;
+}
+
+/* Standardized Toastify Overrides from Reference Project */
+@media only screen and (max-width: 480px) {
+  .Toastify__toast-container {
+    width: 260px !important;
+    max-width: calc(100vw - 32px) !important;
+    padding: 0 !important;
+    left: auto !important;
+    right: 16px !important;
+    top: 16px !important;
+  }
+
+  .Toastify__toast {
+    margin-bottom: 16px !important;
+    border-radius: 8px !important;
+  }
+}
+
+input[type='password']::-ms-reveal,
+input[type='password']::-ms-clear {
+  display: none;
+}
+
+.auth-modal {
+  width: 21.875rem !important;
+  max-width: calc(100% - 32px) !important;
+  height: auto !important;
+  padding: 2.1875rem !important;
+}
+
+/* Modal Responsive Spacing for 320px */
+@media (max-width: 320px) {
+  .common-modal-card {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+    width: calc(
+      100% - 1.25rem * 2
+    ) !important; /* Slightly more margin for very small screens if needed */
+  }
+}
+
+.auth-modal h2#status-modal-title {
+  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.125rem !important; /* 18px */
+  line-height: 2.25rem !important; /* 36px */
+  color: #1c2b51 !important;
+}
+
+/* French Language Layout Adjustments */
+.fr-layout-adjustment {
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    letter-spacing: -0.01em;
+    &.search-container {
+      width: 15rem !important;
+    }
+    &.primary-button {
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+      width: 8.125rem !important; /* Forces "Ajouter un nouvel utilisateur" to wrap */
+      line-height: normal !important;
+      min-width: 0 !important;
+    }
+  }
+}
+
+/* React Select Padding Fixes */
+.react-select__value-container {
+  padding-left: 9px !important;
+  padding-right: 9px !important;
+}
+
+.react-select__placeholder {
+  left: 9px !important;
+}
+
+.react-select__single-value {
+  margin-left: 0 !important;
+}
+
+/* Custom styling for Mapbox popups in User Terminal (PCP-364 Follow-up) */
+.mapboxgl-popup-close-button {
+  padding: 10px !important;
+  right: 10px !important;
+  top: 6px !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  color: #6b7280 !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease !important;
+  outline: none !important;
+}
+
+.custom-terminal-popup .mapboxgl-popup-close-button:hover {
+  background-color: #f3f4f6 !important;
+  color: #1c2b51 !important;
+}
+
+.custom-terminal-popup .mapboxgl-popup-content {
+  border-radius: 12px !important;
+  padding: 0 !important;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Hide default calendar icon and dropdown arrows for custom date inputs */
+.custom-date-input::-webkit-calendar-picker-indicator {
+  display: none !important;
+  opacity: 0 !important;
+  -webkit-appearance: none !important;
+}
+
+.custom-date-input::-webkit-inner-spin-button,
+.custom-date-input::-webkit-clear-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+}
+
+.custom-date-input {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+}
+
+/* Custom placeholder rendering for empty date inputs */
+.custom-date-input.is-empty {
+  color: transparent !important;
+}
+
+.custom-date-input.is-empty:focus {
+  color: #111827 !important;
+}
+
+.custom-date-input:focus ~ .custom-date-placeholder {
+  display: none !important;
+}
+
+/* Hide number input spin buttons globally */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield; /* Firefox */
+  appearance: textfield;
 }
