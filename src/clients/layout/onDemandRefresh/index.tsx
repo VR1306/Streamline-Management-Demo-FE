@@ -31,7 +31,7 @@ const OnDemandRefreshComp = ({moduleType,activeTab,currentOrganization}:{moduleT
               tableHeadDiv:
                 'text-sm font-bold text-left text-header-subtitle flex items-center justify-start px-4 py-3',
             }}
-            renderRow={(item)=>console.warn(item)}
+            renderRow={(item)=>(item)}
             // renderRow={(item) => {
             //   return (
             //     <tr
